@@ -25,14 +25,20 @@ RUN curl -L -O https://github.com/rakshasa/rtorrent/releases/download/v${RTORREN
 	cd .. && \
 	rm -r rtorrent-${RTORRENT_VER}
 
-RUN mkdir /config /downloads
+RUN mkdir -p /config/session \
+	/config/log \
+	/downloads/watch \
+	/downloads/incomplete \
+	/downloads/complete
 
 RUN useradd -ms /bin/bash rtorrent
 
 USER rtorrent
 WORKDIR /home/rtorrent
 
-COPY rtorrent.rc /home/rtorrent/.rtorrent.rc
+COPY rtorrent.rc /config/rtorrent.rc
+
+RUN ln -s /config/rtorrent.rc /home/rtorrent/.rtorrent.rc
 
 EXPOSE 49164 6881
 
