@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  rtorrent:
+    build: .
+    image: rtorrent:0.9.7
+    volumes:
+      - /run/rtorrent/rpc.socket
+    ports:
+      - 53026:53026

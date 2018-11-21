@@ -54,7 +54,7 @@
 
 # Port range to use for listening.
 #
-#network.port_range.set = 6890-6999
+network.port_range.set = 53026
 
 # Start opening ports at a random position within the port range.
 #
